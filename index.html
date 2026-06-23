@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tudo Sobre Erva-Mate</title>
+
+<style>
+:root{
+  --bg:#eef5ee;
+  --card:#fff;
+  --text:#1a1a1a;
+  --primary:#1b5e20;
+}
+
+body.dark{
+  --bg:#0f0f0f;
+  --card:#1e1e1e;
+  --text:#f1f1f1;
+}
+
+body{
+  margin:0;
+  font-family:Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+header{
+  background:linear-gradient(135deg,#1b5e20,#43a047);
+  color:white;
+  text-align:center;
+  padding:25px;
+}
+
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  background:#145a18;
+  position:sticky;
+  top:0;
+}
+
+nav button{
+  background:none;
+  border:none;
+  color:white;
+  padding:12px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+nav button:hover{
+  background:rgba(255,255,255,0.1);
+}
+
+section{
+  display:none;
+  max-width:1000px;
+  margin:20px auto;
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+}
+
+section.active{display:block;}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.card{
+  padding:15px;
+  border-radius:10px;
+  background:var(--card);
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* QUIZ */
+.quiz-btn{
+  display:block;
+  margin:10px 0;
+  padding:10px;
+  width:100%;
+  cursor:pointer;
+  border:none;
+  border-radius:8px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:15px;
+  background:#1b5e20;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🌿 Tudo Sobre Erva-Mate</h1>
+<p>Site interativo nível ABSURDO</p>
+<button onclick="document.body.classList.toggle('dark')">🌙 Modo</button>
+</header>
+
+<nav>
+<button onclick="show('home')">Início</button>
+<button onclick="show('historia')">História</button>
+<button onclick="show('quiz')">Quiz</button>
+<button onclick="show('mapa')">Mapa</button>
+<button onclick="show('curiosidades')">Curiosidades</button>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+<h2>Bem-vindo 🌿</h2>
+<p>Explore tudo sobre erva-mate: história, cultura e curiosidades.</p>
+
+<div class="grid">
+<div class="card">🧉 Chimarrão</div>
+<div class="card">🧊 Tereré</div>
+<div class="card">🌱 Planta natural</div>
+</div>
+</section>
+
+<!-- HISTORIA -->
+<section id="historia">
+<h2>📜 História</h2>
+<p>Consumida pelos povos Guaranis antes da colonização europeia.</p>
+<p>Hoje é símbolo cultural do Sul da América do Sul.</p>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+<h2>🎮 Quiz da Erva-Mate</h2>
+<p id="q">Pergunta 1: Quem consumia erva-mate primeiro?</p>
+
+<button class="quiz-btn" onclick="responder(true)">Povos Guaranis</button>
+<button class="quiz-btn" onclick="responder(false)">Europeus</button>
+<button class="quiz-btn" onclick="responder(false)">Árabes</button>
+
+<p id="score">Pontuação: 0</p>
+</section>
+
+<!-- MAPA -->
+<section id="mapa">
+<h2>🗺️ Regiões produtoras</h2>
+<div class="grid">
+<div class="card">🇧🇷 Brasil (Sul)</div>
+<div class="card">🇦🇷 Argentina (Misiones)</div>
+<div class="card">🇵🇾 Paraguai</div>
+</div>
+</section>
+
+<!-- CURIOSIDADES -->
+<section id="curiosidades">
+<h2>✨ Curiosidades</h2>
+
+<div class="grid">
+<div class="card">É chamada de “ouro verde”</div>
+<div class="card">Tem cafeína natural</div>
+<div class="card">É social e cultural</div>
+<div class="card">Pode ser quente ou fria</div>
+</div>
+</section>
+
+<footer>
+<p>© 2026 - Tudo Sobre Erva-Mate</p>
+</footer>
+
+<script>
+let score = 0;
+
+function show(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function responder(certo){
+  if(certo){
+    score++;
+    alert("✔ Correto!");
+  }else{
+    alert("❌ Errado!");
+  }
+  document.getElementById("score").innerText = "Pontuação: " + score;
+}
+</script>
+
+</body>
+</html>
